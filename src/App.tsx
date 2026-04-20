@@ -19,11 +19,12 @@ import { SERVICES, CONTACT_INFO, ServiceCategory } from './data';
 
 // WordPress Hosted Assets
 const logo = "http://blingobeauty.com/wp-content/uploads/2026/04/bob-or.png";
-const imgHero = "http://blingobeauty.com/wp-content/uploads/2026/04/xd.jpg"; // Photo salon 1
-const imgGallery1 = "http://blingobeauty.com/wp-content/uploads/2026/04/xa.jpg"; // Photo Galerie 2
-const imgGallery2 = "http://blingobeauty.com/wp-content/uploads/2026/04/xc.jpg"; // Photo Galerie 3
-const imgGallery3 = "http://blingobeauty.com/wp-content/uploads/2026/04/xe.jpg"; // Photo Galerie 4
-const imgGallery4 = "http://blingobeauty.com/wp-content/uploads/2026/04/xb.jpg"; // Photo Galerie 5
+const imgHero = "http://blingobeauty.com/wp-content/uploads/2026/04/xc.jpg"; 
+const imgPedicure = "http://blingobeauty.com/wp-content/uploads/2026/04/xa.jpg"; 
+const imgGallery1 = "http://blingobeauty.com/wp-content/uploads/2026/04/xa.jpg"; 
+const imgGallery2 = "http://blingobeauty.com/wp-content/uploads/2026/04/xc.jpg"; 
+const imgGallery3 = "http://blingobeauty.com/wp-content/uploads/2026/04/xe.jpg"; 
+const imgGallery4 = "http://blingobeauty.com/wp-content/uploads/2026/04/xb.jpg"; 
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState<string>(SERVICES[0].id);
@@ -37,7 +38,7 @@ export default function App() {
   }, []);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const galleryImages = [imgHero, imgGallery1, imgGallery2, imgGallery3, imgGallery4];
+  const galleryImages = [imgHero, imgPedicure, imgGallery2, imgGallery3, imgGallery4];
 
   const categoryIcons: Record<string, any> = {
     epilation: Sparkles,
@@ -299,7 +300,7 @@ export default function App() {
           <div className="relative">
             <div className="border border-gold-500/30 p-10 relative z-10">
               <img 
-                src="/xb.jpg" 
+                src={imgPedicure} 
                 alt="Espace Pédicure Bling O Beauty" 
                 className="w-full h-auto grayscale-0 transition-all duration-1000 shadow-2xl"
                 referrerPolicy="no-referrer"
