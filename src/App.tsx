@@ -131,6 +131,15 @@ export default function App() {
               <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-gold-500">Services</a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-gold-500">Contact</a>
               <a 
+                href={CONTACT_INFO.instagram} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="text-2xl font-serif text-gold-500"
+              >
+                Instagram
+              </a>
+              <a 
                 href={CONTACT_INFO.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
