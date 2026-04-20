@@ -83,10 +83,6 @@ export default function App() {
               src="/logo.png" 
               alt="Bling O Beauty Logo" 
               className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
-              referrerPolicy="no-referrer"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
             />
           </div>
 
@@ -149,7 +145,6 @@ export default function App() {
             src="/xa.jpg" 
             alt="Bling O Beauty Interior" 
             className="w-full h-full object-cover scale-110"
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
         </div>
@@ -363,7 +358,6 @@ export default function App() {
                     src={img} 
                     alt={`Gallery ${i}`} 
                     className="w-full h-full object-cover border border-gold-900/20 shadow-2xl grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
-                    referrerPolicy="no-referrer" 
                   />
                 </motion.div>
               ))}
