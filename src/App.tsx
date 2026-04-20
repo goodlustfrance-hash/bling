@@ -169,7 +169,7 @@ export default function App() {
             <h4 className="text-gold-500 text-sm md:text-lg uppercase tracking-[0.4em] font-medium mb-10">
               L'excellence du soin à Casablanca
             </h4>
-            <h1 className="text-6xl md:text-[10rem] font-serif text-gold-500 font-light mb-10 leading-[0.85]">
+            <h1 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-serif text-gold-500 font-light mb-10 leading-[0.85]">
               We make you <br />
               <span className="italic text-gold-600">bling!</span>
             </h1>
@@ -295,10 +295,10 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section className="py-32 bg-gold-950 text-gold-50">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          <div className="relative">
-            <div className="border border-gold-500/30 p-10 relative z-10">
+      <section className="py-24 md:py-32 bg-gold-950 text-gold-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <div className="relative order-2 md:order-1">
+            <div className="border border-gold-500/30 p-4 md:p-10 relative z-10 bg-gold-950/50 backdrop-blur-sm">
               <img 
                 src={imgPedicure} 
                 alt="Espace Pédicure Bling O Beauty" 
@@ -306,37 +306,37 @@ export default function App() {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="absolute -top-10 -left-10 w-40 h-40 border border-gold-500/20" />
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gold-800/10" />
+            <div className="absolute -top-5 -left-5 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 border border-gold-500/20" />
+            <div className="absolute -bottom-5 -right-5 md:-bottom-10 md:-right-10 w-24 h-24 md:w-40 md:h-40 bg-gold-800/10" />
           </div>
 
-          <div>
-            <span className="text-gold-400 text-sm uppercase tracking-widest block mb-6">Notre Philosophie</span>
-            <h2 className="text-4xl md:text-6xl font-serif mb-10 leading-snug">Révélez votre éclat naturel</h2>
-            <p className="text-gold-200/70 text-lg font-light leading-relaxed mb-8">
+          <div className="order-1 md:order-2">
+            <span className="text-gold-400 text-xs md:text-sm uppercase tracking-widest block mb-4 md:mb-6 text-center md:text-left">Notre Philosophie</span>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif mb-6 md:mb-10 leading-snug text-center md:text-left">Révélez votre éclat naturel</h2>
+            <p className="text-gold-200/70 text-base md:text-lg font-light leading-relaxed mb-6 md:mb-8 text-center md:text-left">
               Chez Bling O Beauty, nous croyons que chaque femme détient en elle une lumière unique. Notre mission est de la faire briller à travers des protocoles de soins d'exception et une attention particulière aux détails.
             </p>
-            <p className="text-gold-200/70 text-lg font-light leading-relaxed mb-12">
+            <p className="text-gold-200/70 text-base md:text-lg font-light leading-relaxed mb-8 md:mb-12 text-center md:text-left">
               Depuis notre ouverture dans le prestigieux quartier de Racine, nous cultivons un art de vivre dédié à la beauté, combinant techniques modernes et rituels ancestraux.
             </p>
             
-            <div className="space-y-6">
-              <div className="flex items-center gap-5">
-                <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-400">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+              <div className="flex items-center gap-4 md:gap-5 justify-center md:justify-start">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-400">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs uppercase tracking-widest font-bold">Produits Premium</h4>
-                  <p className="text-sm text-gold-300/50 font-light">Partenaires Thalgo & Wella</p>
+                  <h4 className="text-[10px] md:text-xs uppercase tracking-widest font-bold">Produits Premium</h4>
+                  <p className="text-[10px] md:text-sm text-gold-300/50 font-light">Partenaires Thalgo & Wella</p>
                 </div>
               </div>
-              <div className="flex items-center gap-5">
-                <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-400">
+              <div className="flex items-center gap-4 md:gap-5 justify-center md:justify-start">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-400">
                   <Scissors className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs uppercase tracking-widest font-bold">Experts Coiffure</h4>
-                  <p className="text-sm text-gold-300/50 font-light">Spécialistes coloration & lissage</p>
+                  <h4 className="text-[10px] md:text-xs uppercase tracking-widest font-bold">Experts Coiffure</h4>
+                  <p className="text-[10px] md:text-sm text-gold-300/50 font-light">Spécialistes coloration & lissage</p>
                 </div>
               </div>
             </div>
@@ -406,7 +406,7 @@ export default function App() {
                 <Phone className="text-gold-600 w-8 h-8" />
               </div>
               <h4 className="font-serif text-xl text-gold-500 mb-4 tracking-wider">Téléphone</h4>
-              <a href={`tel:${CONTACT_INFO.phone}`} className="text-gold-600 font-bold text-2xl hover:text-gold-400 transition-colors">
+              <a href={`tel:${CONTACT_INFO.phone}`} className="text-gold-600 font-bold text-xl sm:text-2xl hover:text-gold-400 transition-colors break-all">
                 {CONTACT_INFO.phone}
               </a>
               <p className="text-gold-400 text-xs mt-2 uppercase tracking-widest">Appelez-nous pour réserver</p>
@@ -417,15 +417,11 @@ export default function App() {
                 <Instagram className="text-gold-600 w-8 h-8" />
               </div>
               <h4 className="font-serif text-xl text-gold-500 mb-4 tracking-wider">Suivez-nous</h4>
-              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gold-300 hover:text-gold-500 transition-colors font-medium">
+              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gold-300 hover:text-gold-500 transition-colors font-medium break-all">
                 @blingospa
               </a>
               <p className="text-gold-400 text-xs mt-2 uppercase tracking-widest">Instagram Official</p>
             </div>
-          </div>
-
-          <div className="w-full h-[400px] border border-gold-200 grayscale shadow-lg mb-32 overflow-hidden bg-gold-100 flex items-center justify-center">
-            <span className="text-gold-300 font-serif italic text-2xl">Carte Interactive en attente d'API</span>
           </div>
 
           <div className="pt-20 border-t border-gold-200 flex flex-col md:flex-row justify-between items-center gap-8">
