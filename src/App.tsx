@@ -224,10 +224,11 @@ export default function App() {
                       setActiveCategory(category.id);
                       if (window.innerWidth < 1024) {
                         const el = document.getElementById('services-content');
-                        window.scrollTo({
-                          top: (el?.offsetTop || 0) - 150,
-                          behavior: 'smooth'
-                        });
+                        if (el) {
+                          const yOffset = -120; // Correct for sticky header
+                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
                       }
                     }}
                     className={`flex-none lg:w-full flex items-center gap-3 px-4 py-3 transition-all group whitespace-nowrap rounded-sm ${
@@ -441,11 +442,14 @@ export default function App() {
               <div className="w-20 h-20 bg-gold-200 border border-gold-500/10 rounded-full flex items-center justify-center mb-8 shadow-2xl">
                 <Instagram className="text-gold-600 w-8 h-8" />
               </div>
-              <h4 className="font-serif text-xl text-gold-500 mb-4 tracking-wider">Suivez-nous</h4>
-              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gold-300 hover:text-gold-500 transition-colors font-medium break-all">
-                @blingospa
+              <h4 className="font-serif text-xl text-gold-500 mb-4 tracking-wider">Contact</h4>
+              <a href={`mailto:${CONTACT_INFO.email}`} className="text-gold-300 hover:text-gold-500 transition-colors font-medium break-all mb-2">
+                {CONTACT_INFO.email}
               </a>
-              <p className="text-gold-400 text-xs mt-2 uppercase tracking-widest">Instagram Official</p>
+              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gold-300 hover:text-gold-500 transition-colors font-medium break-all">
+                Instagram @blingospa
+              </a>
+              <p className="text-gold-400 text-xs mt-2 uppercase tracking-widest">Suivez-nous & Écrivez-nous</p>
             </div>
           </div>
 

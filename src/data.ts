@@ -119,6 +119,6 @@ export const CONTACT_INFO = {
   phone: "+212663362688",
   instagram: "https://www.instagram.com/blingospa/",
   address: "4, rue Al mansour saadi, les iris Racine, Casablanca",
-  email: "contact@blingbeauty.ma",
+  email: "blingospa@gmail.com",
   bookingUrl: "https://calendar.google.com/calendar/u/0/appointments/schedules/placeholder" // Le client devra remplacer le lien par son vrai lien Google Appointment
 };
