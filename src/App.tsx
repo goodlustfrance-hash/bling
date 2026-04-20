@@ -287,19 +287,19 @@ export default function App() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.05 }}
                         key={service.name} 
-                        className="group"
+                        className="group border-b border-gold-900/10 pb-6 mb-6 last:border-0 last:mb-0"
                       >
-                        <div className="flex justify-between items-baseline gap-2 md:gap-4 mb-2">
-                          <span className="text-xs md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider leading-tight">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-2 md:gap-6 mb-3">
+                          <span className="text-lg md:text-3xl font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-widest leading-tight flex-1">
                             {service.name}
                           </span>
-                          <div className="flex-1 border-b border-dotted border-gold-900/30" />
-                          <span className="text-xs md:text-base font-serif font-bold text-gold-500 shrink-0">
+                          <div className="hidden sm:block flex-1 border-b border-dotted border-gold-900/30" />
+                          <span className="text-2xl md:text-5xl font-serif font-bold text-gold-500 shrink-0">
                             {service.price}
                           </span>
                         </div>
                         {service.description && (
-                          <p className="text-[10px] md:text-xs text-gold-400 font-light italic leading-relaxed">
+                          <p className="text-xs md:text-lg text-gold-400 font-light italic leading-relaxed max-w-2xl">
                             {service.description}
                           </p>
                         )}
