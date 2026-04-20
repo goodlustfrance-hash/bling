@@ -17,6 +17,14 @@ import {
 } from 'lucide-react';
 import { SERVICES, CONTACT_INFO, ServiceCategory } from './data';
 
+// Import assets
+import logo from './assets/logo.png';
+import imgHero from './assets/xa.jpg';
+import imgGallery1 from './assets/xb.jpg';
+import imgGallery2 from './assets/xc.jpg';
+import imgGallery3 from './assets/xd.jpg';
+import imgGallery4 from './assets/xe.jpg';
+
 export default function App() {
   const [activeCategory, setActiveCategory] = useState<string>(SERVICES[0].id);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +37,7 @@ export default function App() {
   }, []);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const galleryImages = ['/xa.jpg', '/xb.jpg', '/xc.jpg', '/xd.jpg', '/xe.jpg'];
+  const galleryImages = [imgHero, imgGallery1, imgGallery2, imgGallery3, imgGallery4];
 
   const categoryIcons: Record<string, any> = {
     epilation: Sparkles,
@@ -80,7 +88,7 @@ export default function App() {
           {/* Centered Logo */}
           <div className="flex flex-1 justify-center">
             <img 
-              src="/logo.png" 
+              src={logo} 
               alt="Bling O Beauty Logo" 
               className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
             />
@@ -142,7 +150,7 @@ export default function App() {
       <header className="relative h-[110vh] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 opacity-50">
           <img 
-            src="/xa.jpg" 
+            src={imgHero} 
             alt="Bling O Beauty Interior" 
             className="w-full h-full object-cover scale-110"
           />
