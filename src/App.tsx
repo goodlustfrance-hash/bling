@@ -80,7 +80,7 @@ export default function App() {
           {/* Centered Logo */}
           <div className="flex flex-1 justify-center">
             <img 
-              src="/bob or.png" 
+              src="/logo.png" 
               alt="Bling O Beauty Logo" 
               className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
               referrerPolicy="no-referrer"
