@@ -53,7 +53,7 @@ export default function App() {
   const currentCategory = SERVICES.find(c => c.id === activeCategory) || SERVICES[0];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gold-50">
       {/* Lightbox */}
       <AnimatePresence>
         {selectedImage && (
@@ -149,7 +149,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <header className="relative h-[110vh] flex items-center justify-center overflow-hidden bg-black">
+      <header className="relative min-h-[90vh] md:h-[110vh] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 opacity-50">
           <img 
             src={imgHero} 
@@ -212,23 +212,23 @@ export default function App() {
             <div className="w-24 h-1 bg-gold-300 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12 items-start text-left">
             {/* Category Navigation */}
-            <div className="lg:col-span-1 space-y-2 sticky top-32">
+            <div className="lg:col-span-1 sticky top-20 lg:top-32 z-20 bg-gold-50 pt-4 pb-2 -mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto no-scrollbar flex lg:flex-col gap-2 border-b lg:border-none border-gold-900/10">
               {SERVICES.map((category) => {
                 const Icon = categoryIcons[category.id] || Sparkles;
                 return (
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`w-full flex items-center gap-4 px-6 py-4 transition-all group ${
+                    className={`flex-none lg:w-full flex items-center gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 transition-all group whitespace-nowrap ${
                       activeCategory === category.id 
-                      ? 'bg-gold-500 text-white shadow-lg' 
-                      : 'hover:bg-gold-100/50 text-gold-800'
+                      ? 'bg-gold-500 text-white shadow-lg scale-105 lg:scale-100' 
+                      : 'bg-white lg:bg-transparent hover:bg-gold-100/50 text-gold-800'
                     }`}
                   >
-                    <Icon className={`w-4 h-4 ${activeCategory === category.id ? 'text-white' : 'text-gold-400 group-hover:text-gold-600'}`} />
-                    <span className="text-xs uppercase tracking-widest font-semibold">{category.title}</span>
+                    <Icon className={`w-3.5 h-3.5 md:w-4 md:h-4 ${activeCategory === category.id ? 'text-white' : 'text-gold-400 group-hover:text-gold-600'}`} />
+                    <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold">{category.title}</span>
                   </button>
                 );
               })}
@@ -245,11 +245,11 @@ export default function App() {
                   transition={{ duration: 0.4 }}
                   className="bg-gold-100 p-8 md:p-16 border border-gold-900/10 shadow-2xl"
                 >
-                  <h3 className="text-3xl md:text-4xl font-serif text-gold-500 mb-12 pb-6 border-b border-gold-900/20 uppercase tracking-widest">
+                  <h3 className="text-2xl md:text-4xl font-serif text-gold-500 mb-8 md:mb-12 pb-4 md:pb-6 border-b border-gold-900/20 uppercase tracking-widest text-center lg:text-left">
                     {currentCategory.title}
                   </h3>
                   
-                  <div className="space-y-8">
+                  <div className="space-y-6 md:space-y-8">
                     {currentCategory.items.map((service, idx) => (
                       <motion.div 
                         initial={{ opacity: 0, y: 10 }}
@@ -258,17 +258,17 @@ export default function App() {
                         key={service.name} 
                         className="group"
                       >
-                        <div className="flex justify-between items-baseline gap-4 mb-2">
-                          <span className="text-sm md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider">
+                        <div className="flex flex-wrap justify-between items-baseline gap-2 md:gap-4 mb-2">
+                          <span className="text-xs md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider shrink-0">
                             {service.name}
                           </span>
-                          <div className="flex-1 border-b border-dotted border-gold-900/30" />
-                          <span className="text-sm md:text-base font-serif font-bold text-gold-500 shrink-0">
+                          <div className="flex-1 min-w-[20px] border-b border-dotted border-gold-900/30" />
+                          <span className="text-xs md:text-base font-serif font-bold text-gold-500 shrink-0">
                             {service.price}
                           </span>
                         </div>
                         {service.description && (
-                          <p className="text-xs text-gold-400 font-light italic leading-relaxed">
+                          <p className="text-[10px] md:text-xs text-gold-400 font-light italic leading-relaxed">
                             {service.description}
                           </p>
                         )}
