@@ -78,8 +78,8 @@ export default function App() {
         )}
       </AnimatePresence>
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 bg-black/95 backdrop-blur-sm border-b border-gold-900/20 py-2`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 bg-black/95 backdrop-blur-sm border-b border-gold-900/20 py-1`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-16 md:h-20">
           {/* Left Links */}
           <div className="hidden md:flex flex-1 items-center gap-8">
             <a href="#services" className="text-white text-[10px] uppercase tracking-[0.2em] font-semibold hover:text-gold-400 transition-colors">Services</a>
@@ -87,11 +87,11 @@ export default function App() {
           </div>
 
           {/* Centered Logo */}
-          <div className="flex flex-1 justify-center">
+          <div className="flex flex-1 justify-center relative">
             <img 
               src={logo} 
               alt="Bling O Beauty Logo" 
-              className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
+              className="h-24 md:h-32 w-auto object-contain transition-all duration-500 absolute top-1/2 -translate-y-1/2 drop-shadow-2xl"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -127,7 +127,13 @@ export default function App() {
                 <X className="w-8 h-8 text-gold-500" />
               </button>
             </div>
-            <div className="flex flex-col gap-8 mt-20 items-center">
+            <div className="flex flex-col gap-8 mt-10 items-center">
+              <img 
+                src={logo} 
+                alt="Logo" 
+                className="h-24 w-auto mb-10 object-contain"
+                referrerPolicy="no-referrer"
+              />
               <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-gold-500">Services</a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif text-gold-500">Contact</a>
               <a 
