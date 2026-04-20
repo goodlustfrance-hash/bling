@@ -214,7 +214,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-12 items-start text-left">
             {/* Category Navigation */}
-            <div className="lg:col-span-1 sticky top-16 lg:top-32 z-20 bg-gold-50 py-4 -mx-6 px-6 lg:mx-0 lg:px-0 flex lg:flex-col gap-2 overflow-x-auto no-scrollbar border-b lg:border-none border-gold-900/10">
+            <div className="lg:col-span-1 sticky top-16 lg:top-32 z-20 bg-gold-50 py-4 px-2 lg:px-0 flex lg:flex-col gap-2 overflow-x-auto no-scrollbar border-b lg:border-none border-gold-900/10 w-full">
               {SERVICES.map((category) => {
                 const Icon = categoryIcons[category.id] || Sparkles;
                 return (
@@ -222,12 +222,16 @@ export default function App() {
                     key={category.id}
                     onClick={() => {
                       setActiveCategory(category.id);
-                      // On mobile we don't need to scroll to top of section usually but let's keep it simple
+                      // Scroll to target section on mobile if needed
+                      if (window.innerWidth < 1024) {
+                        const el = document.getElementById('services-content');
+                        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
                     }}
-                    className={`flex-none lg:w-full flex items-center gap-3 px-5 py-3 transition-all group whitespace-nowrap rounded-sm ${
+                    className={`flex-none lg:w-full flex items-center gap-3 px-4 py-3 transition-all group whitespace-nowrap rounded-sm ${
                       activeCategory === category.id 
                       ? 'bg-gold-500 text-white shadow-lg' 
-                      : 'bg-white lg:bg-transparent text-gold-800 border border-gold-900/5 lg:border-none'
+                      : 'bg-white lg:bg-transparent text-gold-800 border border-gold-900/5 lg:border-none shadow-sm lg:shadow-none'
                     }`}
                   >
                     <Icon className={`w-4 h-4 ${activeCategory === category.id ? 'text-white' : 'text-gold-400 group-hover:text-gold-600'}`} />
@@ -238,7 +242,7 @@ export default function App() {
             </div>
 
             {/* Service Items */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3" id="services-content">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory}
@@ -261,11 +265,11 @@ export default function App() {
                         key={service.name} 
                         className="group"
                       >
-                        <div className="flex flex-wrap justify-between items-baseline gap-2 md:gap-4 mb-2">
-                          <span className="text-xs md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider shrink-0">
+                        <div className="flex justify-between items-baseline gap-2 md:gap-4 mb-2">
+                          <span className="text-xs md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider max-w-[70%] leading-tight">
                             {service.name}
                           </span>
-                          <div className="flex-1 min-w-[20px] border-b border-dotted border-gold-900/30" />
+                          <div className="flex-1 border-b border-dotted border-gold-900/30" />
                           <span className="text-xs md:text-base font-serif font-bold text-gold-500 shrink-0">
                             {service.price}
                           </span>
@@ -360,13 +364,16 @@ export default function App() {
           </div>
           
           <div className="relative group">
-            <div className="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory no-scrollbar scroll-smooth">
+            <div 
+              id="gallery-slider"
+              className="flex gap-4 md:gap-6 overflow-x-auto pb-12 snap-x snap-mandatory no-scrollbar scroll-smooth p-2"
+            >
               {galleryImages.map((img, i) => (
                 <motion.div 
                   key={i}
                   whileHover={{ scale: 0.98 }}
                   onClick={() => setSelectedImage(img)}
-                  className="min-w-[80vw] md:min-w-[40vw] lg:min-w-[30vw] aspect-[4/5] md:aspect-video snap-center cursor-zoom-in"
+                  className="min-w-[75vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] aspect-[4/5] md:aspect-video snap-center cursor-zoom-in"
                 >
                   <img 
                     src={img} 
@@ -379,8 +386,15 @@ export default function App() {
             </div>
             
             {/* Visual indicators for scroll */}
-            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="hidden md:block absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="hidden md:block absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+
+            {/* Mobile hints */}
+            <div className="flex md:hidden justify-center gap-4 mt-4">
+              <div className="w-1.5 h-1.5 rounded-full bg-gold-500/50" />
+              <div className="w-1.5 h-1.5 rounded-full bg-gold-500" />
+              <div className="w-1.5 h-1.5 rounded-full bg-gold-500/50" />
+            </div>
           </div>
         </div>
       </section>
