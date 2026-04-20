@@ -20,7 +20,7 @@
 
 @layer base {
   body {
-    @apply bg-gold-50 text-gold-300 font-sans antialiased;
+    @apply bg-[#050505] text-gold-300 font-sans antialiased;
   }
   
   h1, h2, h3, h4, .font-serif {

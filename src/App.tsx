@@ -53,7 +53,7 @@ export default function App() {
   const currentCategory = SERVICES.find(c => c.id === activeCategory) || SERVICES[0];
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gold-50">
+    <div className="min-h-screen w-full overflow-x-hidden bg-black selection:bg-gold-500 selection:text-black">
       {/* Lightbox */}
       <AnimatePresence>
         {selectedImage && (
@@ -109,7 +109,7 @@ export default function App() {
           </div>
 
           <button className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
-            <Menu className="w-6 h-6 text-gold-100" />
+            <Menu className="w-6 h-6 text-gold-500" />
           </button>
         </div>
       </nav>
@@ -173,7 +173,7 @@ export default function App() {
               We make you <br />
               <span className="italic text-gold-600">bling!</span>
             </h1>
-            <p className="text-gold-300/60 text-xl md:text-2xl font-light mb-16 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/90 text-lg md:text-2xl font-light mb-16 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
               Découvrez une oasis de sérénité où beauté et bien-être se rencontrent dans un cadre luxueux et raffiné.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
@@ -212,23 +212,26 @@ export default function App() {
             <div className="w-24 h-1 bg-gold-300 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12 items-start text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-12 items-start text-left">
             {/* Category Navigation */}
-            <div className="lg:col-span-1 sticky top-20 lg:top-32 z-20 bg-gold-50 pt-4 pb-2 -mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto no-scrollbar flex lg:flex-col gap-2 border-b lg:border-none border-gold-900/10">
+            <div className="lg:col-span-1 sticky top-16 lg:top-32 z-20 bg-gold-50 py-4 -mx-6 px-6 lg:mx-0 lg:px-0 flex lg:flex-col gap-2 overflow-x-auto no-scrollbar border-b lg:border-none border-gold-900/10">
               {SERVICES.map((category) => {
                 const Icon = categoryIcons[category.id] || Sparkles;
                 return (
                   <button
                     key={category.id}
-                    onClick={() => setActiveCategory(category.id)}
-                    className={`flex-none lg:w-full flex items-center gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 transition-all group whitespace-nowrap ${
+                    onClick={() => {
+                      setActiveCategory(category.id);
+                      // On mobile we don't need to scroll to top of section usually but let's keep it simple
+                    }}
+                    className={`flex-none lg:w-full flex items-center gap-3 px-5 py-3 transition-all group whitespace-nowrap rounded-sm ${
                       activeCategory === category.id 
-                      ? 'bg-gold-500 text-white shadow-lg scale-105 lg:scale-100' 
-                      : 'bg-white lg:bg-transparent hover:bg-gold-100/50 text-gold-800'
+                      ? 'bg-gold-500 text-white shadow-lg' 
+                      : 'bg-white lg:bg-transparent text-gold-800 border border-gold-900/5 lg:border-none'
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 md:w-4 md:h-4 ${activeCategory === category.id ? 'text-white' : 'text-gold-400 group-hover:text-gold-600'}`} />
-                    <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold">{category.title}</span>
+                    <Icon className={`w-4 h-4 ${activeCategory === category.id ? 'text-white' : 'text-gold-400 group-hover:text-gold-600'}`} />
+                    <span className="text-[11px] md:text-xs uppercase tracking-widest font-bold font-sans">{category.title}</span>
                   </button>
                 );
               })}
