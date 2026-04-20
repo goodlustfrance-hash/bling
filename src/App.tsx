@@ -17,13 +17,13 @@ import {
 } from 'lucide-react';
 import { SERVICES, CONTACT_INFO, ServiceCategory } from './data';
 
-// Import assets
-import logo from './assets/logo.png';
-import imgHero from './assets/xa.jpg';
-import imgGallery1 from './assets/xb.jpg';
-import imgGallery2 from './assets/xc.jpg';
-import imgGallery3 from './assets/xd.jpg';
-import imgGallery4 from './assets/xe.jpg';
+// WordPress Hosted Assets
+const logo = "http://blingobeauty.com/wp-content/uploads/2026/04/bob-or.png";
+const imgHero = "http://blingobeauty.com/wp-content/uploads/2026/04/xd.jpg"; // Photo salon 1
+const imgGallery1 = "http://blingobeauty.com/wp-content/uploads/2026/04/xa.jpg"; // Photo Galerie 2
+const imgGallery2 = "http://blingobeauty.com/wp-content/uploads/2026/04/xc.jpg"; // Photo Galerie 3
+const imgGallery3 = "http://blingobeauty.com/wp-content/uploads/2026/04/xe.jpg"; // Photo Galerie 4
+const imgGallery4 = "http://blingobeauty.com/wp-content/uploads/2026/04/xb.jpg"; // Photo Galerie 5
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState<string>(SERVICES[0].id);
@@ -91,6 +91,7 @@ export default function App() {
               src={logo} 
               alt="Bling O Beauty Logo" 
               className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
+              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -153,6 +154,7 @@ export default function App() {
             src={imgHero} 
             alt="Bling O Beauty Interior" 
             className="w-full h-full object-cover scale-110"
+            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
         </div>
@@ -366,6 +368,7 @@ export default function App() {
                     src={img} 
                     alt={`Gallery ${i}`} 
                     className="w-full h-full object-cover border border-gold-900/20 shadow-2xl grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
+                    referrerPolicy="no-referrer"
                   />
                 </motion.div>
               ))}
