@@ -149,7 +149,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <header className="relative min-h-[90vh] md:h-[110vh] flex items-center justify-center overflow-hidden bg-black">
+      <header className="relative min-h-[100vh] md:min-h-[110vh] flex items-start md:items-center justify-center overflow-hidden bg-black pt-40 md:pt-0">
         <div className="absolute inset-0 opacity-50">
           <img 
             src={imgHero} 
@@ -212,9 +212,9 @@ export default function App() {
             <div className="w-24 h-1 bg-gold-300 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-12 items-start text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-12 items-start text-left relative">
             {/* Category Navigation */}
-            <div className="lg:col-span-1 sticky top-16 lg:top-32 z-20 bg-gold-50 py-4 px-2 lg:px-0 flex lg:flex-col gap-2 overflow-x-auto no-scrollbar border-b lg:border-none border-gold-900/10 w-full">
+            <div className="lg:col-span-1 sticky top-16 lg:top-32 z-20 bg-gold-50 py-4 px-2 lg:px-0 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible no-scrollbar lg:no-scrollbar border-b lg:border-none border-gold-900/10 w-full flex-nowrap scroll-smooth relative">
               {SERVICES.map((category) => {
                 const Icon = categoryIcons[category.id] || Sparkles;
                 return (
@@ -222,10 +222,12 @@ export default function App() {
                     key={category.id}
                     onClick={() => {
                       setActiveCategory(category.id);
-                      // Scroll to target section on mobile if needed
                       if (window.innerWidth < 1024) {
                         const el = document.getElementById('services-content');
-                        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        window.scrollTo({
+                          top: (el?.offsetTop || 0) - 150,
+                          behavior: 'smooth'
+                        });
                       }
                     }}
                     className={`flex-none lg:w-full flex items-center gap-3 px-4 py-3 transition-all group whitespace-nowrap rounded-sm ${
@@ -239,6 +241,12 @@ export default function App() {
                   </button>
                 );
               })}
+              {/* Fade Hint */}
+              <div className="lg:hidden absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gold-50 to-transparent pointer-events-none" />
+            </div>
+            {/* Scroll Indicator for mobile */}
+            <div className="lg:hidden absolute top-[4.5rem] right-2 text-[8px] uppercase tracking-[0.2em] text-gold-400 pointer-events-none animate-pulse">
+              Défilez →
             </div>
 
             {/* Service Items */}
@@ -266,7 +274,7 @@ export default function App() {
                         className="group"
                       >
                         <div className="flex justify-between items-baseline gap-2 md:gap-4 mb-2">
-                          <span className="text-xs md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider max-w-[70%] leading-tight">
+                          <span className="text-xs md:text-base font-medium text-gold-300 group-hover:text-gold-500 transition-colors uppercase tracking-wider leading-tight">
                             {service.name}
                           </span>
                           <div className="flex-1 border-b border-dotted border-gold-900/30" />
